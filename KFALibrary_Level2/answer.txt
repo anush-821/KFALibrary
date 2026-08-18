@@ -1,0 +1,26 @@
+================================================================================
+KFALibrary - Section A2: String Comparison Explanation (== vs. .equals())
+================================================================================
+
+In Java, comparing String variables using `==` checks for reference equality,
+meaning it determines whether both variables point to the exact same memory address 
+in the heap or String Pool. When one String is instantiated using `new String(...)`, 
+Java explicitly creates a new object in heap memory rather than reusing an existing 
+reference from the String Pool. Consequently, `==` evaluates to `false` even if both 
+String instances contain identical sequence of characters.
+
+On the other hand, the `.equals()` method compares content equality by evaluating 
+the actual sequence of characters inside the String objects, regardless of where 
+they are located in memory. Because International Standard Book Number (ISBN)
+represent structural identity data where matching characters determine equality, `.
+equals()` (or `.equalsIgnoreCase()`) is the correct choice for comparing ISBNs.
+
+--------------------------------------------------------------------------------
+Code Example Demonstration:
+
+    String isbn1 = "978-0134685991";
+    String isbn2 = new String("978-0134685991");
+
+    System.out.println("Using == : " + (isbn1 == isbn2));       // Output: false
+    System.out.println("Using .equals() : " + isbn1.equals(isbn2)); // Output: true
+================================================================================
